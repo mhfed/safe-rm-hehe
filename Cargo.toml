@@ -13,5 +13,6 @@ categories = ["command-line-utilities"]
 [dependencies]
 # clap: dùng để parse command line arguments
 clap = { version = "4.4", features = ["derive"] }
+colored = "3.0.0"
 # trash: dùng để tương tác với thùng rác của hệ điều hành
 trash = "3.1"
