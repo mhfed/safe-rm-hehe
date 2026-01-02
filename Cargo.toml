@@ -1,10 +1,14 @@
 [package]
-name = "safe-rm-hieuminh" # Tên nên duy nhất nếu bạn định publish lên crates.io
+name = "safe-rm" # Đảm bảo tên này chưa ai đặt trên crates.io
 version = "0.1.0"
 edition = "2021"
-authors = ["Hieu Minh <your-email@example.com>"]
-description = "Một công cụ thay thế rm giúp di chuyển file vào thùng rác thay vì xóa vĩnh viễn"
+description = "Một công cụ thay thế lệnh rm, giúp đưa file vào thùng rác thay vì xóa vĩnh viễn."
 license = "MIT"
+repository = "https://github.com/mhfed/safe-rm"
+homepage = "https://github.com/mhfed/safe-rm"
+readme = "README.md"
+keywords = ["rm", "safe", "trash", "cli"]
+categories = ["command-line-utilities"]
 
 [dependencies]
 # clap: dùng để parse command line arguments
