@@ -1,0 +1,13 @@
+[package]
+name = "safe-rm-hieuminh" # Tên nên duy nhất nếu bạn định publish lên crates.io
+version = "0.1.0"
+edition = "2021"
+authors = ["Hieu Minh <your-email@example.com>"]
+description = "Một công cụ thay thế rm giúp di chuyển file vào thùng rác thay vì xóa vĩnh viễn"
+license = "MIT"
+
+[dependencies]
+# clap: dùng để parse command line arguments
+clap = { version = "4.4", features = ["derive"] }
+# trash: dùng để tương tác với thùng rác của hệ điều hành
+trash = "3.1"
