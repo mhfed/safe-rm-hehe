@@ -1,6 +1,6 @@
 [package]
 name = "safe-rm-hehe" # Đảm bảo tên này chưa ai đặt trên crates.io
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 description = "Một công cụ thay thế lệnh rm, giúp đưa file vào thùng rác thay vì xóa vĩnh viễn."
 license = "MIT"

@@ -1,33 +1,32 @@
 #!/bin/bash
 
-# 1. Xác định hệ điều hành
-OS="$(uname -s)"
-ARCH="$(uname -m)"
+echo "🚀 Đang chuẩn bị cài đặt safe-rm-hehe..."
 
-echo "🚀 Đang cài đặt safe-rm cho $OS ($ARCH)..."
-
-# 2. Tải binary từ GitHub Release (Bạn cần thay URL sau khi publish)
-# Ví dụ: URL="https://github.com/user/safe-rm/releases/latest/download/safe-rm-$OS"
-# curl -L $URL -o /usr/local/bin/safe-rm
-
-# 3. Cài đặt quyền thực thi
-# chmod +x /usr/local/bin/safe-rm
-
-# 4. Tự động thêm Alias vào Shell (Tính năng quan trọng nhất)
-SHELL_CONFIG=""
-if [[ $SHELL == *"zsh"* ]]; then
-    SHELL_CONFIG="$HOME/.zshrc"
-elif [[ $SHELL == *"bash"* ]]; then
-    SHELL_CONFIG="$HOME/.bashrc"
+# 1. Kiểm tra và cài đặt binary qua Cargo
+if ! command -v safe-rm-hehe &> /dev/null; then
+    echo "📦 Đang cài đặt từ crates.io..."
+    cargo install safe-rm-hehe
+else
+    echo "✅ safe-rm-hehe đã được cài đặt."
 fi
 
+# 2. Xác định file cấu hình Shell
+SHELL_CONFIG=""
+case $SHELL in
+    */zsh)  SHELL_CONFIG="$HOME/.zshrc" ;;
+    */bash) SHELL_CONFIG="$HOME/.bashrc" ;;
+    *)      echo "⚠️ Không hỗ trợ shell này, hãy tự thêm alias thủ công." ;;
+esac
+
+# 3. Thêm Alias (Sử dụng tên binary chính xác trên crates.io)
 if [ -n "$SHELL_CONFIG" ]; then
     if ! grep -q "alias rm=" "$SHELL_CONFIG"; then
-        echo "alias rm='safe-rm'" >> "$SHELL_CONFIG"
-        echo "✅ Đã thêm alias vào $SHELL_CONFIG. Hãy khởi động lại Terminal hoặc gõ 'source $SHELL_CONFIG'"
+        echo -e "\n# Safe RM Alias\nalias rm='safe-rm-hehe'" >> "$SHELL_CONFIG"
+        echo "✅ Đã thêm alias vào $SHELL_CONFIG"
+        echo "👉 Hãy chạy: source $SHELL_CONFIG để bắt đầu sử dụng."
     else
-        echo "ℹ️ Alias 'rm' đã tồn tại, hãy kiểm tra lại file cấu hình của bạn."
+        echo "ℹ️ Alias 'rm' đã tồn tại trong $SHELL_CONFIG."
     fi
 fi
 
-echo "🎉 Cài đặt hoàn tất! Từ nay gõ 'rm' sẽ cực kỳ an toàn."
+echo "🎉 Xong! Bây giờ bạn có thể gõ 'rm -rf' mà không sợ mất dữ liệu."
